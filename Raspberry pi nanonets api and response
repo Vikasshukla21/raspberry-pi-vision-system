@@ -1,0 +1,19 @@
+import requests
+
+import picamera as PiCamera
+
+camera.start()
+
+delay(5)
+
+camera.capture()
+
+camera.stop()
+
+url = 'https://app.nanonets.com/api/v2/ObjectDetection/Model/REPLACE_MODEL_ID/LabelFile/'
+
+data = {'file': open('REPLACE_IMAGE_PATH.jpg', 'rb')}
+
+response = requests.post(url, auth=requests.auth.HTTPBasicAuth('API-KEY', ''), files=data)
+
+print(response.text)
